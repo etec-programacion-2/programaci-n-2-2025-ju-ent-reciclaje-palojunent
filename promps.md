@@ -20,3 +20,4 @@ Es un contenedor de datos inmutables, en este caso actua como una plantilla o un
 Todos los materiales tienen exactamente la misma estructura
 Facilita operaciones del sistema
 Proporciona toda la funcionalidad necesaria (comparación, copia, representación) sin código adicional.
+No requieren validación en tiempo de ejecución
