@@ -104,3 +104,12 @@
             
             println("\n" + "=".repeat(62) + "\n")
             println("- Total de plata obtenida por reciclar:  $${String.format("%.2f", totalValor)} - ")
+
+===========================================================
+
+ISSUE 3
+
+la clase ItemReciclable representa un item reciclado entregado por un usuario y modela una entrega específica de material reciclable, combinando el tipo de material con la cantidad entregada. Devuelve IllegalArgumentException si el peso es negativo.
+ 
+
+codigo para probar el funcionamiento de la issue 3
