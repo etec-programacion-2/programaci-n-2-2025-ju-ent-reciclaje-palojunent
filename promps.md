@@ -104,3 +104,93 @@
             
             println("\n" + "=".repeat(62) + "\n")
             println("- Total de plata obtenida por reciclar:  $${String.format("%.2f", totalValor)} - ")
+
+===========================================================
+
+ISSUE 3
+
+la clase ItemReciclable representa un item reciclado entregado por un usuario y modela una entrega específica de material reciclable, combinando el tipo de material con la cantidad entregada. Devuelve IllegalArgumentException si el peso es negativo.
+ 
+
+codigo para probar el funcionamiento de la issue 3 generado con ia
+
+fun main() {
+    // Código para verificar el funcionamiento de las clases en sus archivos separados.
+
+    // 1. Mostrar el catálogo completo de materiales disponibles
+    println("=== CATÁLOGO DE MATERIALES RECICLABLES ===\n")
+    println(" - Materiales disponibles para la venta -\n")
+    CatalogoDeMateriales.materialesReciclables.forEach { material ->
+        println("   ${material.nombre}: ${material.categoria} - $${material.precioporunidad}")
+    }
+
+    // 2. Probar la función de búsqueda por nombre
+    println("\n" + "=".repeat(43) + "\n")
+    println(" - Buscar material por nombre -\n")
+    val materialBuscado = CatalogoDeMateriales.buscarPorNombre("Botella PET")
+    if (materialBuscado != null) {
+        println("   Material encontrado: ${materialBuscado.nombre}")
+        println("   Categoría: ${materialBuscado.categoria}")
+        println("   Precio por kg: $${materialBuscado.precioporunidad}")
+    } else {
+        println("   Material no encontrado")
+    }
+
+    // 3. Probar la función de filtrado por categoría
+    println("\n" + "=".repeat(43) + "\n")
+    println(" - Materiales por categoría -\n")
+    
+    println("  PLÁSTICOS: ")
+    val plasticos = CatalogoDeMateriales.materialesPorCategoria(CategoriaResiduos.PLASTICO)
+    plasticos.forEach { 
+        println("     - ${it.nombre}: $${it.precioporunidad}")
+    }
+    
+    println(" \n  METALES:")
+    val metales = CatalogoDeMateriales.materialesPorCategoria(CategoriaResiduos.METAL)
+    metales.forEach { 
+        println("     - ${it.nombre}: $${it.precioporunidad}")
+    }
+
+    // 4. Probar la clase ItemReciclado con un peso válido
+    println("\n" + "=".repeat(62) + "\n")
+    println(" - PRUEBAS DE LA CLASE ITEMRECICLADO - \n")
+    
+    val materialParaItem = CatalogoDeMateriales.buscarPorNombre("Botella PET")
+    if (materialParaItem != null) {
+        val itemValido = ItemReciclado(materialParaItem, 2.5)
+        println("   ✅ Item creado correctamente: ${itemValido.material.nombre} con ${itemValido.pesoEnKg} kg")
+    }
+
+    // 5. Probar la validación de peso negativo en ItemReciclado
+    try {
+        val materialInvalido = CatalogoDeMateriales.buscarPorNombre("Lata refresco")
+        if (materialInvalido != null) {
+            val itemInvalido = ItemReciclado(materialInvalido, -1.5)
+            // Esta línea no debería ejecutarse
+        }
+    } catch (e: IllegalArgumentException) {
+        println("   ❌ Error capturado. La restricción de peso negativo funciona:")
+        println("   Mensaje de error: ${e.message}")
+    }
+
+    // 6. Calcular el valor total de una colección de items reciclados
+    println("\n" + "=".repeat(62) + "\n")
+    println(" - Cálculo del valor total de ítems - \n")
+
+    val itemsDePrueba = listOf(
+        ItemReciclado(CatalogoDeMateriales.buscarPorNombre("Botella PET")!!, 10.0),
+        ItemReciclado(CatalogoDeMateriales.buscarPorNombre("Lata refresco")!!, 5.0),
+        ItemReciclado(CatalogoDeMateriales.buscarPorNombre("Papel periódico")!!, 20.0)
+    )
+
+    var totalValor = 0.0
+    itemsDePrueba.forEach { item ->
+        val valor = item.material.precioporunidad * item.pesoEnKg
+        totalValor += valor
+        println("   ${item.pesoEnKg} kg de ${item.material.nombre} = $${String.format("%.2f", valor)}")
+    }
+    
+    println("\n   TOTAL: $${String.format("%.2f", totalValor)}")
+    println("\n" + "=".repeat(62) + "\n")
+}
