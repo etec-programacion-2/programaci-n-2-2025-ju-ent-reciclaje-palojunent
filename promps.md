@@ -221,6 +221,3 @@ fun main() {
 
 (MODIFICACIONES 09-09-25:
 Agregué un package org.example en cada archivo .kt para que la estructura de carpetas coincida con la del paquete y así poder verificar el funcionamiento del código)
-===========================================================
-
-ISSUE 4
