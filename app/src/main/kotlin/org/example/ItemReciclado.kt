@@ -1,4 +1,5 @@
-data class ItemReciclado (
+package org.example 
+data class ItemReciclado(
     val material: MaterialReciclable,
     val pesoEnKg: Double
 ){

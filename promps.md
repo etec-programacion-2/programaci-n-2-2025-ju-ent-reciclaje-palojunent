@@ -112,85 +112,115 @@ ISSUE 3
 la clase ItemReciclable representa un item reciclado entregado por un usuario y modela una entrega específica de material reciclable, combinando el tipo de material con la cantidad entregada. Devuelve IllegalArgumentException si el peso es negativo.
  
 
-codigo para probar el funcionamiento de la issue 3 generado con ia
+codigo para probar el funcionamiento de la issue 3 generado con ia : 
 
 fun main() {
-    // Código para verificar el funcionamiento de las clases en sus archivos separados.
-
-    // 1. Mostrar el catálogo completo de materiales disponibles
-    println("=== CATÁLOGO DE MATERIALES RECICLABLES ===\n")
-    println(" - Materiales disponibles para la venta -\n")
+    println("=== PRUEBA DEL SISTEMA DE RECICLAJE ===\n")
+    
+    // 1. Probar el catálogo de materiales
+    println("1. Catálogo de materiales disponibles:")
     CatalogoDeMateriales.materialesReciclables.forEach { material ->
-        println("   ${material.nombre}: ${material.categoria} - $${material.precioporunidad}")
-    }
-
-    // 2. Probar la función de búsqueda por nombre
-    println("\n" + "=".repeat(43) + "\n")
-    println(" - Buscar material por nombre -\n")
-    val materialBuscado = CatalogoDeMateriales.buscarPorNombre("Botella PET")
-    if (materialBuscado != null) {
-        println("   Material encontrado: ${materialBuscado.nombre}")
-        println("   Categoría: ${materialBuscado.categoria}")
-        println("   Precio por kg: $${materialBuscado.precioporunidad}")
-    } else {
-        println("   Material no encontrado")
-    }
-
-    // 3. Probar la función de filtrado por categoría
-    println("\n" + "=".repeat(43) + "\n")
-    println(" - Materiales por categoría -\n")
-    
-    println("  PLÁSTICOS: ")
-    val plasticos = CatalogoDeMateriales.materialesPorCategoria(CategoriaResiduos.PLASTICO)
-    plasticos.forEach { 
-        println("     - ${it.nombre}: $${it.precioporunidad}")
+        println("   ${material.nombre} (${material.categoria}) - $${material.precioporunidad}/kg")
     }
     
-    println(" \n  METALES:")
-    val metales = CatalogoDeMateriales.materialesPorCategoria(CategoriaResiduos.METAL)
-    metales.forEach { 
-        println("     - ${it.nombre}: $${it.precioporunidad}")
-    }
-
-    // 4. Probar la clase ItemReciclado con un peso válido
-    println("\n" + "=".repeat(62) + "\n")
-    println(" - PRUEBAS DE LA CLASE ITEMRECICLADO - \n")
+    println("\n" + "=".repeat(60) + "\n")
     
-    val materialParaItem = CatalogoDeMateriales.buscarPorNombre("Botella PET")
-    if (materialParaItem != null) {
-        val itemValido = ItemReciclado(materialParaItem, 2.5)
-        println("   ✅ Item creado correctamente: ${itemValido.material.nombre} con ${itemValido.pesoEnKg} kg")
+    // 2. Probar búsqueda de materiales
+    println("2. Búsqueda de materiales:")
+    val botellaPet = CatalogoDeMateriales.buscarPorNombre("Botella PET")
+    if (botellaPet != null) {
+        println("   ✓ Encontrado: ${botellaPet.nombre} - $${botellaPet.precioporunidad}/kg")
     }
-
-    // 5. Probar la validación de peso negativo en ItemReciclado
+    
+    val noExiste = CatalogoDeMateriales.buscarPorNombre("Papel higiénico")
+    println("   ${if (noExiste != null) "✓" else "✗"} Papel higiénico: ${if (noExiste != null) "Encontrado" else "No encontrado"}")
+    
+    println("\n" + "=".repeat(60) + "\n")
+    
+    // 3. Probar ItemReciclado - Casos válidos
+    println("3. Creando items reciclados (casos válidos):")
+    
     try {
-        val materialInvalido = CatalogoDeMateriales.buscarPorNombre("Lata refresco")
-        if (materialInvalido != null) {
-            val itemInvalido = ItemReciclado(materialInvalido, -1.5)
-            // Esta línea no debería ejecutarse
-        }
+        val cableCobre = CatalogoDeMateriales.buscarPorNombre("Cable cobre")!!
+        val item1 = ItemReciclado(cableCobre, 2.5)
+        println("   ✓ Item creado: ${item1.material.nombre} - ${item1.pesoEnKg}kg")
+        println("     Valor total: $${item1.material.precioporunidad * item1.pesoEnKg}")
+        
+        val lataRefresco = CatalogoDeMateriales.buscarPorNombre("Lata refresco")!!
+        val item2 = ItemReciclado(lataRefresco, 0.8)
+        println("   ✓ Item creado: ${item2.material.nombre} - ${item2.pesoEnKg}kg")
+        println("     Valor total: $${item2.material.precioporunidad * item2.pesoEnKg}")
+        
+        // Caso límite: peso 0
+        val item3 = ItemReciclado(botellaPet!!, 0.0)
+        println("   ✓ Item con peso 0: ${item3.material.nombre} - ${item3.pesoEnKg}kg (válido)")
+        
     } catch (e: IllegalArgumentException) {
-        println("   ❌ Error capturado. La restricción de peso negativo funciona:")
-        println("   Mensaje de error: ${e.message}")
-    }
-
-    // 6. Calcular el valor total de una colección de items reciclados
-    println("\n" + "=".repeat(62) + "\n")
-    println(" - Cálculo del valor total de ítems - \n")
-
-    val itemsDePrueba = listOf(
-        ItemReciclado(CatalogoDeMateriales.buscarPorNombre("Botella PET")!!, 10.0),
-        ItemReciclado(CatalogoDeMateriales.buscarPorNombre("Lata refresco")!!, 5.0),
-        ItemReciclado(CatalogoDeMateriales.buscarPorNombre("Papel periódico")!!, 20.0)
-    )
-
-    var totalValor = 0.0
-    itemsDePrueba.forEach { item ->
-        val valor = item.material.precioporunidad * item.pesoEnKg
-        totalValor += valor
-        println("   ${item.pesoEnKg} kg de ${item.material.nombre} = $${String.format("%.2f", valor)}")
+        println("   ✗ Error inesperado: ${e.message}")
     }
     
-    println("\n   TOTAL: $${String.format("%.2f", totalValor)}")
-    println("\n" + "=".repeat(62) + "\n")
+    println("\n" + "=".repeat(60) + "\n")
+    
+    // 4. Probar ItemReciclado - Casos inválidos
+    println("4. Probando validación de peso negativo:")
+    
+    try {
+        val papel = CatalogoDeMateriales.buscarPorNombre("Papel periódico")!!
+        val itemInvalido = ItemReciclado(papel, -1.5)
+        println("   ✗ ERROR: Se creó un item con peso negativo (no debería pasar)")
+    } catch (e: IllegalArgumentException) {
+        println("   ✓ Validación funcionando: ${e.message}")
+    }
+    
+    try {
+        val carton = CatalogoDeMateriales.buscarPorNombre("Cartón corrugado")!!
+        val itemInvalido2 = ItemReciclado(carton, -0.1)
+        println("   ✗ ERROR: Se creó un item con peso negativo (no debería pasar)")
+    } catch (e: IllegalArgumentException) {
+        println("   ✓ Validación funcionando: ${e.message}")
+    }
+    
+    println("\n" + "=".repeat(60) + "\n")
+    
+    // 5. Ejemplo práctico: Simulación de entrega de reciclaje
+    println("5. Simulación de entrega de reciclaje:")
+    
+    val entregaReciclaje = listOf(
+        ItemReciclado(CatalogoDeMateriales.buscarPorNombre("Botella PET")!!, 3.2),
+        ItemReciclado(CatalogoDeMateriales.buscarPorNombre("Cable cobre")!!, 1.8),
+        ItemReciclado(CatalogoDeMateriales.buscarPorNombre("Lata refresco")!!, 2.1),
+        ItemReciclado(CatalogoDeMateriales.buscarPorNombre("Botella vidrio")!!, 5.5)
+    )
+    
+    var valorTotal = 0.0
+    println("   Detalle de la entrega:")
+    entregaReciclaje.forEach { item ->
+        val valorItem = item.material.precioporunidad * item.pesoEnKg
+        valorTotal += valorItem
+        println("   - ${item.material.nombre}: ${item.pesoEnKg}kg × $${item.material.precioporunidad} = $${String.format("%.2f", valorItem)}")
+    }
+    
+    println("\n   💰 TOTAL A PAGAR: $${String.format("%.2f", valorTotal)}")
+    
+    println("\n" + "=".repeat(60) + "\n")
+    
+    // 6. Resumen de materiales por categoría
+    println("6. Resumen por categorías:")
+    CategoriaResiduos.values().forEach { categoria ->
+        val materiales = CatalogoDeMateriales.materialesPorCategoria(categoria)
+        if (materiales.isNotEmpty()) {
+            println("   ${categoria}: ${materiales.size} material(es)")
+            materiales.forEach { material ->
+                println("     • ${material.nombre} - $${material.precioporunidad}/kg")
+            }
+        }
+    }
+    
+    println("\n=== PRUEBAS COMPLETADAS ===")
 }
+
+(MODIFICACIONES 09-09-25:
+Agregué un package org.example en cada archivo .kt para que la estructura de carpetas coincida con la del paquete y así poder verificar el funcionamiento del código)
+===========================================================
+
+ISSUE 4
