@@ -8,4 +8,7 @@ data class ItemReciclado(
             "El peso no puede ser negativo : peso $pesoEnKg kg. "
         }
     }
+    fun calcularBeneficio(): Double{
+        return pesoEnKg * material.precioporunidad
+    }
 }

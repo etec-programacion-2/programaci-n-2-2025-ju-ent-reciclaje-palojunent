@@ -221,3 +221,45 @@ fun main() {
 
 (MODIFICACIONES 09-09-25:
 Agregué un package org.example en cada archivo .kt para que la estructura de carpetas coincida con la del paquete y así poder verificar el funcionamiento del código)
+===================
+ISSUE 4 
+codigo generado x ia para comprobar el funcionamiento de las modificaciones del archivo de ItemReciclable (sin los testeos unitarios)
+
+fun main (){
+    println("=== SISTEMA DE RECICLAJE ===\n")
+    
+    // 1. Crear algunos items
+    val cobre = CatalogoDeMateriales.buscarPorNombre("Cable cobre")!!
+    val item1 = ItemReciclado(cobre, 2.0)
+    
+    val lata = CatalogoDeMateriales.buscarPorNombre("Lata refresco")!!
+    val item2 = ItemReciclado(lata, 3.0)
+    
+    // 2. Mostrar beneficios
+    println("Item 1: ${item1.material.nombre}")
+    println("Peso: ${item1.pesoEnKg} kg")
+    println("Beneficio: $${item1.calcularBeneficio()}")
+    
+    println()
+    
+    println("Item 2: ${item2.material.nombre}")
+    println("Peso: ${item2.pesoEnKg} kg") 
+    println("Beneficio: $${item2.calcularBeneficio()}")
+    
+    println()
+    
+    // 3. Total
+    val total = item1.calcularBeneficio() + item2.calcularBeneficio()
+    println("Total: $$total")
+    
+    println("\n=== PRUEBA DE VALIDACIÓN ===")
+    
+    // 4. Probar peso negativo
+    try {
+        ItemReciclado(cobre, -1.0)
+    } catch (e: IllegalArgumentException) {
+        println("✓ Error capturado : ${e.message}")
+    }
+}
+
+(Utilicé las librerías JUnit 5 en el archivo de ItemReciclableTest.Kt para poder crear los tests unitarios, pero en un archivo separado para más organización y para que mejor funcionamiento ) 
