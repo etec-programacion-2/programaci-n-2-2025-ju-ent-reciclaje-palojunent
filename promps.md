@@ -221,7 +221,8 @@ fun main() {
 
 (MODIFICACIONES 09-09-25:
 Agregué un package org.example en cada archivo .kt para que la estructura de carpetas coincida con la del paquete y así poder verificar el funcionamiento del código)
-===================
+========================================================
+
 ISSUE 4 
 codigo generado x ia para comprobar el funcionamiento de las modificaciones del archivo de ItemReciclable (sin los testeos unitarios)
 
@@ -262,4 +263,39 @@ fun main (){
     }
 }
 
-(Utilicé las librerías JUnit 5 en el archivo de ItemReciclableTest.Kt para poder crear los tests unitarios, pero en un archivo separado para más organización y para que mejor funcionamiento ) 
+(Utilicé las librerías JUnit 5 en el archivo de ItemReciclableTest.Kt para poder crear los tests unitarios, pero en un archivo separado para más organización y para mejor funcionamiento ) 
+12-09-25
+(saqué el archivo ItemReciclableTest.Kt, no hace falta hacerlo.)
+
+Es bueno que la clase ItemReciclado se encargue de este cálculo ya que la clase tiene la información y valores del peso y del material para poder realizar el cálculo 
+
+(CODIGO FINAL PARA PROBAR EL FUNCIONAMIENTO DEL MÉTODO EN LA CLASE ITEMRECICLADO)
+
+fun main (){
+    println("=== SISTEMA DE RECICLAJE ===\n")
+    
+    // 1. Crear algunos items
+    val cobre = CatalogoDeMateriales.buscarPorNombre("Cable cobre")!!
+    val item1 = ItemReciclado(cobre, -1.0)
+    
+    val lata = CatalogoDeMateriales.buscarPorNombre("Lata refresco")!!
+    val item2 = ItemReciclado(lata, 3.0)
+    
+    // 2. Mostrar beneficios
+    println("Item 1: ${item1.material.nombre}")
+    println("Peso: ${item1.pesoEnKg} kg")
+    println("Beneficio: $${item1.calcularBeneficio()}")
+    
+    println()
+    
+    println("Item 2: ${item2.material.nombre}")
+    println("Peso: ${item2.pesoEnKg} kg") 
+    println("Beneficio: $${item2.calcularBeneficio()}")
+    
+    println()
+    
+    // 3. Total
+    val total = item1.calcularBeneficio() + item2.calcularBeneficio()
+    println("Total: $$total")
+    
+}
