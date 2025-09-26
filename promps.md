@@ -303,4 +303,100 @@ fun main (){
 ==========================================
 
 ISSUE 5 
+codigo para probar el funcionamiento de tarea de reciclaje generado x IA
+fun main (){
+   println("=== SISTEMA DE RECICLAJE - PRUEBA DE FUNCIONAMIENTO ===\n")
+    
+    // Crear una nueva tarea de reciclaje
+    val tareaReciclaje = TareaDeReciclaje()
+    
+    // Obtener algunos materiales del catálogo
+    val papelPeriodico = CatalogoDeMateriales.buscarPorNombre("Papel periódico")
+    val botellaPlastico = CatalogoDeMateriales.buscarPorNombre("Botella PET")
+    val lataAluminio = CatalogoDeMateriales.buscarPorNombre("Lata refresco")
+    val cableCobre = CatalogoDeMateriales.buscarPorNombre("Cable cobre")
+    val carton = CatalogoDeMateriales.buscarPorNombre("Cartón corrugado")
+    
+    println("1. MATERIALES DISPONIBLES EN EL CATÁLOGO:")
+    CatalogoDeMateriales.materialesReciclables.forEach { material ->
+        println("   • ${material.nombre} (${material.categoria}) - $${material.precioporunidad}/kg")
+    }
+    
+    println("\n2. AGREGANDO ITEMS A LA TAREA DE RECICLAJE:")
+    
+    // Crear y agregar items reciclados
+    try {
+        papelPeriodico?.let { material ->
+            val item1 = ItemReciclado(material, 5.0)
+            tareaReciclaje.agregarItem(item1)
+            println("   ✓ Agregado: ${material.nombre} - ${item1.pesoEnKg}kg - Beneficio: $${item1.calcularBeneficio()}")
+        }
+        
+        botellaPlastico?.let { material ->
+            val item2 = ItemReciclado(material, 2.5)
+            tareaReciclaje.agregarItem(item2)
+            println("   ✓ Agregado: ${material.nombre} - ${item2.pesoEnKg}kg - Beneficio: $${item2.calcularBeneficio()}")
+        }
+        
+        lataAluminio?.let { material ->
+            val item3 = ItemReciclado(material, 1.2)
+            tareaReciclaje.agregarItem(item3)
+            println("   ✓ Agregado: ${material.nombre} - ${item3.pesoEnKg}kg - Beneficio: $${item3.calcularBeneficio()}")
+        }
+        
+        cableCobre?.let { material ->
+            val item4 = ItemReciclado(material, 0.8)
+            tareaReciclaje.agregarItem(item4)
+            println("   ✓ Agregado: ${material.nombre} - ${item4.pesoEnKg}kg - Beneficio: $${item4.calcularBeneficio()}")
+        }
+        
+        carton?.let { material ->
+            val item5 = ItemReciclado(material, 3.2)
+            tareaReciclaje.agregarItem(item5)
+            println("   ✓ Agregado: ${material.nombre} - ${item5.pesoEnKg}kg - Beneficio: $${item5.calcularBeneficio()}")
+        }
+        
+    } catch (e: IllegalArgumentException) {
+        println("   ❌ Error: ${e.message}")
+    }
+    
+    println("\n3. RESUMEN DE LA TAREA DE RECICLAJE:")
+    println("   Total de items: ${tareaReciclaje.items.size}")
+    println("   Beneficio total: $${String.format("%.2f", tareaReciclaje.calcularBeneficioTotal())}")
+    
+    println("\n4. DETALLE POR ITEM:")
+    tareaReciclaje.items.forEachIndexed { index, item ->
+        println("   ${index + 1}. ${item.material.nombre}")
+        println("      Categoría: ${item.material.categoria}")
+        println("      Peso: ${item.pesoEnKg}kg")
+        println("      Precio por kg: $${item.material.precioporunidad}")
+        println("      Beneficio: $${String.format("%.2f", item.calcularBeneficio())}")
+        println()
+    }
+    
+    // Prueba de búsqueda por categoría
+    println("5. MATERIALES POR CATEGORÍA:")
+    CategoriaResiduos.values().forEach { categoria ->
+        val materiales = CatalogoDeMateriales.materialesPorCategoria(categoria)
+        if (materiales.isNotEmpty()) {
+            println("   ${categoria}:")
+            materiales.forEach { material ->
+                println("     • ${material.nombre} - $${material.precioporunidad}/kg")
+            }
+        }
+    }
+    
+    // Prueba de manejo de errores
+    println("\n6. PRUEBA DE VALIDACIÓN (peso negativo):")
+    try {
+        papelPeriodico?.let { material ->
+            val itemInvalido = ItemReciclado(material, -2.0)
+            tareaReciclaje.agregarItem(itemInvalido)
+        }
+    } catch (e: IllegalArgumentException) {
+        println("   ❌ Error capturado correctamente: ${e.message}")
+    }
+    
+    println("\n=== FIN DE LAS PRUEBAS ===")
+     }
 

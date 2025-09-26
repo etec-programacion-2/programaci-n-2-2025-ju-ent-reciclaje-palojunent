@@ -1,5 +1,4 @@
-package org.example 
+package org.example
 
-fun main () {
-    
-}
+fun main() {
+ 

@@ -1,7 +1,7 @@
 package org.example 
 
 class TareaDeReciclaje(
-    val items: Mutablelist <ItemReciclado> = mutableListOf()
+    val items: MutableList <ItemReciclado> = mutableListOf()
 ){
     fun agregarItem(item: ItemReciclado){
             items.add(item)
