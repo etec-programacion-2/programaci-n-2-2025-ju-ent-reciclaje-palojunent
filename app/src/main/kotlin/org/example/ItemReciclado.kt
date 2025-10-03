@@ -1,4 +1,5 @@
 package org.example 
+
 data class ItemReciclado(
     val material: MaterialReciclable,
     val pesoEnKg: Double
@@ -9,6 +10,6 @@ data class ItemReciclado(
         }
     }
     fun calcularBeneficio(): Double{
-        return pesoEnKg * material.precioporunidad
+        return pesoEnKg * material.precioPorUnidad
     }
 }

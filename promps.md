@@ -400,3 +400,92 @@ fun main (){
     println("\n=== FIN DE LAS PRUEBAS ===")
      }
 
+================================
+ISSUE 6 
+
+SINGLETON: 
+Patrón de diseño que se utiliza para garantizar que una clase tenga una única instancia y brindar un punto de acceso global para esta. Se utiliza la palabra object porque además de ser la manera más fácil para crear singletons, declara un objecto único, haciendo que ese object ya esté instanciado, y el código tenga menos errores. 
+
+(MODIFICACIONES)
+
+en el archivo de MaterialReciclable, quité el object que había creado con la lista y lo puse en el archivo nuevo de CatalogoMateriales, así el código está más organizado, dejando solamente en MaterialReciclable la data class definida. 
+
+
+CODIGO GENERADOR POR IA PARA PROBAR EL FUNCIONAMIENTO DEL CODIGO 
+
+fun main {
+    println("--- Iniciando Pruebas de Funcionamiento del Sistema de Reciclaje ---")
+    println(" ")
+
+    // 1. Prueba del Singleton CatalogoMateriales
+    println("### 1. Pruebas de Catálogo de Materiales (Singleton) ###")
+    
+    // Listar todos los materiales
+    val listaCompleta = CatalogoMateriales.listarMateriales()
+    println("Total de Materiales en Catálogo: ${listaCompleta.size}")
+
+    // Prueba explícita del Singleton: Ambas referencias deben ser la misma instancia
+    val managerA = CatalogoMateriales
+    val managerB = CatalogoMateriales
+    println("Comprobando Singleton: ¿managerA es el mismo objeto que managerB? ${managerA === managerB}") // Debería ser 'true'
+
+    // Buscar por nombre
+    val materialCobre = CatalogoMateriales.buscarPorNombre("Cable cobre")
+    val materialNoExiste = CatalogoMateriales.buscarPorNombre("Plástico burbuja")
+    println("Búsqueda 'Cable cobre': ${materialCobre?.nombre} (Precio: $${materialCobre?.precioPorUnidad}/kg)")
+    println("Búsqueda 'Plástico burbuja': ${materialNoExiste?.nombre ?: "No encontrado"}")
+
+    // Filtrar por categoría
+    val plasticos = CatalogoMateriales.materialesPorCategoria(CategoriaResiduos.PLASTICO)
+    println("Materiales en categoría PLASTICO (${plasticos.size}):")
+    plasticos.forEach {
+        println("  -> ${it.nombre} ($${it.precioPorUnidad}/kg)")
+    }
+
+    println("\n" + "-".repeat(50) + "\n")
+
+
+    // 2. Creación de Tarea de Reciclaje y Cálculo de Beneficio
+    println("### 2. Pruebas de TareaDeReciclaje y Beneficio ###")
+
+    // Obtener materiales para la tarea
+    val papel = CatalogoMateriales.buscarPorNombre("Papel periódico")!! // Asumimos que existe
+    val lata = CatalogoMateriales.buscarPorNombre("Lata refresco")!!   // Asumimos que existe
+
+    // Crear la tarea
+    val miTarea = TareaDeReciclaje()
+    
+    // Agregar items
+    val itemPapel = ItemReciclado(papel, 5.5) // 5.5 kg de papel
+    val itemLata = ItemReciclado(lata, 2.0)   // 2.0 kg de latas
+    val itemPapelExtra = ItemReciclado(papel, 10.0) // 10.0 kg más de papel
+
+    miTarea.agregarItem(itemPapel)
+    miTarea.agregarItem(itemLata)
+    miTarea.agregarItem(itemPapelExtra)
+
+    println("Items agregados a la tarea:")
+    miTarea.items.forEach { 
+        println("- ${it.material.nombre} | Peso: ${it.pesoEnKg} kg | Beneficio: $${String.format("%.2f", it.calcularBeneficio())}")
+    }
+    
+    // Calcular beneficio total
+    val beneficioFinal = miTarea.calcularBeneficioTotal()
+    println("\nBENEFICIO TOTAL DE LA TAREA: $${String.format("%.2f", beneficioFinal)}")
+    
+    // Cálculo manual para verificar:
+    // (5.5 * 0.15) + (2.0 * 1.20) + (10.0 * 0.15) = 0.825 + 2.40 + 1.50 = 4.725
+    println("Verificación de cálculo: $4.725")
+
+    println("\n" + "-".repeat(50) + "\n")
+    
+    // 3. Prueba de Requisito de ItemReciclado (Peso Negativo)
+    println("### 3. Prueba de Excepción de Peso Negativo ###")
+    try {
+        ItemReciclado(papel, -1.0)
+    } catch (e: IllegalArgumentException) {
+        println("Excepción capturada con éxito: ${e.message}")
+    }
+
+    println("\n--- Pruebas Finalizadas ---")
+}
