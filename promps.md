@@ -493,7 +493,7 @@ fun main {
 
 ISSUE 7
 
-La clase servicioCalculadora ayuda a organizar el codigo ya que brinda metodos simples sin necesidad de conocer la estructura completa del codigo, es facil de modificar y maneja de manera "elegante" el printeo de errores. Además que la coordinacion entre clases está en un mismo lugar, y no dispersa en todo el código. 
+La clase servicioCalculadora ayuda a organizar el codigo ya que brinda metodos simples sin necesidad de conocer la estructura completa del codigo, es facil de modificar y maneja de manera "elegante" el printeo de errores. Además que la coordinacion entre clases está en un mismo lugar, y no dispersa en todo el código. Es decir, como es una clase de servicio, contiene lògica, no código. 
 
 
 codigo del app.kt generado por IA: 
