@@ -489,3 +489,55 @@ fun main {
 
     println("\n--- Pruebas Finalizadas ---")
 }
+===============================================================
+
+ISSUE 7
+
+La clase servicioCalculadora ayuda a organizar el codigo ya que brinda metodos simples sin necesidad de conocer la estructura completa del codigo, es facil de modificar y maneja de manera "elegante" el printeo de errores. Además que la coordinacion entre clases está en un mismo lugar, y no dispersa en todo el código. 
+
+
+codigo del app.kt generado por IA: 
+
+fun main() {
+    val servicio = ServicioCalculadora()
+    
+    println("═══════════════════════════════════════")
+    println("   SISTEMA DE RECICLAJE - Nueva Tarea")
+    println("═══════════════════════════════════════\n")
+    
+    // Iniciar nueva tarea
+    val tarea = servicio.iniciarNuevaTarea()
+    
+    // Agregar items válidos
+    servicio.agregarItemATarea(tarea, "Papel periódico", 10.5)
+    servicio.agregarItemATarea(tarea, "Botella PET", 2.3)
+    servicio.agregarItemATarea(tarea, "Lata refresco", 1.5)
+    servicio.agregarItemATarea(tarea, "Cable cobre", 0.8)
+    
+    println()
+    
+    // Intentar agregar un material que no existe (para demostrar el manejo de errores)
+    servicio.agregarItemATarea(tarea, "Madera", 5.0)
+    
+    println("\n═══════════════════════════════════════")
+    println("   RESUMEN DE LA TAREA")
+    println("═══════════════════════════════════════")
+    
+    // Mostrar detalle de items
+    println("\nItems procesados:")
+    tarea.items.forEachIndexed { index, item ->
+        println("  ${index + 1}. ${item.material.nombre}")
+        println("     Categoría: ${item.material.categoria}")
+        println("     Peso: ${item.pesoEnKg}kg")
+        println("     Precio/kg: $${item.material.precioPorUnidad}")
+        println("     Beneficio: $${String.format("%.2f", item.calcularBeneficio())}")
+        println()
+    }
+    
+    // Finalizar tarea y mostrar beneficio total
+    val beneficioTotal = servicio.finalizarTarea(tarea)
+    println("───────────────────────────────────────")
+    println("BENEFICIO TOTAL: $${String.format("%.2f", beneficioTotal)}")
+    println("TOTAL DE ITEMS: ${tarea.items.size}")
+    println("═══════════════════════════════════════")
+}
