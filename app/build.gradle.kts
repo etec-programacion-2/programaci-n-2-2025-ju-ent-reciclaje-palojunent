@@ -47,3 +47,8 @@ tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+tasks.named<JavaExec>("run") {
+    // Esto es crucial para que 'readLine()' no devuelva null inmediatamente
+    // y espere la entrada del usuario desde el terminal.
+    standardInput = System.`in`
+}
