@@ -5,7 +5,7 @@ fun main (){
     val servicio = ServicioCalculadora()
 
         //catalogo de materiales(materiales disponibles)
-        println("═══════════════════════════════════════")
+        println("══════════════════════════════════════════")
         println("=== CATÁLOGO DE MATERIALES RECICLABLES ===\n")
         println(" - Materiales disponibles para la venta -\n")
 
@@ -27,8 +27,9 @@ fun main (){
    servicio.agregarItemATarea(tarea, "Cable cobre", 0.8)
   
    println()
+   
    // Mostrar detalle de items
-   println("\nItems procesados:")
+   println("\n - Materiales procesados - \n")
    tarea.items.forEachIndexed { index, item ->
        println("  ${index + 1}. ${item.material.nombre}")
        println("     Categoría: ${item.material.categoria}")
@@ -44,5 +45,3 @@ fun main (){
    println("TOTAL DE ITEMS: ${tarea.items.size}")
    println("═══════════════════════════════════════")
     }
-
-}

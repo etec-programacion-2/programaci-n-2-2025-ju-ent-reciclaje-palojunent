@@ -10,7 +10,7 @@ class ServicioCalculadora(){
         if (material != null) {
         val item = ItemReciclado(material, peso)
         tarea.agregarItem(item)
-        println("Item agregado exitosamente: ${material.nombre} - ${peso}kg - Beneficio: $${String.format("%.2f", item.calcularBeneficio())}")
+        println("Material agregado: ${material.nombre} - ${peso}kg - Beneficio: $${String.format("%.2f", item.calcularBeneficio())}")
     } else {
         println("Error: El material '$nombreMaterial' no existe en el catálogo")
         println("Materiales disponibles:")
