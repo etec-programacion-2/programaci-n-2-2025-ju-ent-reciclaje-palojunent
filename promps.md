@@ -541,3 +541,13 @@ fun main() {
     println("TOTAL DE ITEMS: ${tarea.items.size}")
     println("═══════════════════════════════════════")
 }
+
+(MODIFICACIONES)
+Le agregué al codigo una subissue, la cual dice que hay que crear un .kt para poder poner en un archivo aparte toda la presentacion del codigo. Modifiqué el app.kt, y puse todos los prints en PresentacionReciclaje.kt, en una clase para poder organizar mejor y que el app.kt quede solamente con las llamadas a las clases y las val.
+
+Para poder hacer el codigo interactivo, modifique el archivo build.gradle.kts agregandole un bloque 
+tasks.named<JavaExec>("run") {
+    // Esto es crucial para que 'readLine()' no devuelva null inmediatamente
+    // y espere la entrada del usuario desde el terminal.
+    standardInput = System.`in`
+}
