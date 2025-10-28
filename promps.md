@@ -551,3 +551,8 @@ tasks.named<JavaExec>("run") {
     // y espere la entrada del usuario desde el terminal.
     standardInput = System.`in`
 }
+
+---------------
+SUBISSUE 3 (7)
+
+Agregué archivos con clases nuevas para mejorar el codigo y terminar de implementar los principios SOLID. Hice pequeñas modificaciones en todos los archivos existentes para poder adaptarlos a los archivos agregados. Organicé el código también, dejando el app.kt con la logica principal. 

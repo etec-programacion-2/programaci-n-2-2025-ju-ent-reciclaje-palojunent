@@ -1,7 +1,7 @@
 package org.example
 
-object CatalogoMateriales {
-
+// SRP: Solo gestiona el catálogo de materiales
+object CatalogoMateriales : ICatalogoMateriales {
     private val materialesReciclables = listOf(
         MaterialReciclable("Papel periódico", CategoriaResiduos.PAPEL, 0.15),
         MaterialReciclable("Cartón corrugado", CategoriaResiduos.CARTÓN, 0.12),
@@ -12,11 +12,8 @@ object CatalogoMateriales {
         MaterialReciclable("Cable cobre", CategoriaResiduos.METAL, 6.50)
     )
 
-   fun listarMateriales(): List<MaterialReciclable> = materialesReciclables
-
-   fun buscarPorNombre(nombre: String): MaterialReciclable? = 
+    override fun listarMateriales(): List<MaterialReciclable> = materialesReciclables
+    
+    override fun buscarPorNombre(nombre: String): MaterialReciclable? =
         materialesReciclables.find { it.nombre == nombre }
-
-    fun materialesPorCategoria(categoria: CategoriaResiduos): List<MaterialReciclable> = 
-    materialesReciclables.filter { it.categoria == categoria }
 }
