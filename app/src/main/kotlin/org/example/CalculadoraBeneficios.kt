@@ -2,7 +2,7 @@ package org.example
 
 // SRP: Solo calcula beneficios
 // OCP: Podemos extender creando otras estrategias de cálculo
-@JsExport
+
 class CalculadoraBeneficios : ICalculadoraBeneficios {
     
     override fun calcularBeneficioItem(item: ItemReciclado): Double {

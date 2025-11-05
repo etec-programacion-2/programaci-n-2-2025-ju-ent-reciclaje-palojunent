@@ -1,7 +1,7 @@
 package org.example
 
 // SRP: Solo formatea datos para mostrar en la UI
-// OCP: Podemos extender con nuevos formateadores sin modificar este
+
 interface IFormateadorUI {
     fun formatearListaItems(items: List<ItemReciclado>): List<String>
     fun formatearMensajeExito(item: ItemReciclado, beneficio: Double): String

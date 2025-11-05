@@ -566,3 +566,5 @@ SUBISSUE 1 (8) AVANCES
 Ordené un poco el código y estoy implementando un pequeño html para poder generar la interfaz del programa, utilizando en lo posible kotlin, pero el archivo se convertiría en java script para poder pasarlo a html y ejecutarlo en el navegador. 
 
 Para la interfaz estoy utilizando swing, y agregué unos archivos para poder hacer la interfaz gráfica, pero probablemente los modifique en un futuro ya que no funcionan muy bien. Probé en hacer la interfaz con html, pero no funcionó. Lo que si conservé fueron los archivos que modifiqué (separé las sealedclass). La interfaz gráfica no funciona. La terminal si. 
+
+Para que pueda funcionar swing, modifiqué el archivo de App.Test.kt, con el contenido actual. Modifiqué el app.kt y le puse una funcion mainGUI.kt temporal para comprobar el funcionamiento del código. 

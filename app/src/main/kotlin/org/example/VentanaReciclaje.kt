@@ -3,9 +3,7 @@ package org.example
 import javax.swing.*
 import java.awt.*
 
-// SRP: Solo maneja la construcción y actualización de componentes visuales
-// ISP: Implementa solo la interfaz IVistaReciclaje
-// DIP: No depende de implementaciones concretas
+// SRP: Solo maneja componentes visuales
 class VentanaReciclaje(
     private val catalogo: ICatalogoMateriales,
     private val formateador: IFormateadorUI,
@@ -27,7 +25,6 @@ class VentanaReciclaje(
         configurarEventos()
     }
     
-    // Implementación IVistaReciclaje
     override fun mostrarMensajeExito(mensaje: String) {
         lblMensaje.text = "✅ $mensaje"
         lblMensaje.foreground = Color(46, 125, 50)
@@ -68,7 +65,6 @@ class VentanaReciclaje(
         return txtPeso.text.toDoubleOrNull()
     }
     
-    // Métodos privados de construcción UI
     private fun configurarVentana() {
         defaultCloseOperation = EXIT_ON_CLOSE
         setSize(900, 600)

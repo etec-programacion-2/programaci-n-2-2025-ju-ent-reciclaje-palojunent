@@ -1,7 +1,8 @@
 package org.example
 
 // SRP: Solo coordina entre la vista y el servicio
-// DIP: Depende de abstracciones, no de implementaciones concretas
+// DIP: Depende de abstracciones
+
 class ControladorUI(
     private val servicio: ServicioReciclaje,
     private val tarea: TareaDeReciclaje,
@@ -24,7 +25,6 @@ class ControladorUI(
         val nombreMaterial = vistaActual.obtenerMaterialSeleccionado()
         val peso = vistaActual.obtenerPeso()
         
-        // Validar entrada de la vista
         if (nombreMaterial == null || nombreMaterial == "-- Seleccione un material --") {
             vistaActual.mostrarMensajeError("Debe seleccionar un material")
             return
@@ -35,10 +35,8 @@ class ControladorUI(
             return
         }
         
-        // Delegar al servicio
         val resultado = servicio.agregarItemATarea(tarea, nombreMaterial, peso)
         
-        // Procesar resultado
         when (resultado) {
             is ResultadoAgregarItem.Exito -> {
                 vistaActual.actualizarListaItems(formateador.formatearListaItems(tarea.obtenerItems()))
