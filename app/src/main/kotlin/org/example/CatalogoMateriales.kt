@@ -1,6 +1,7 @@
 package org.example
 
 // SRP: Solo gestiona el catálogo de materiales
+
 object CatalogoMateriales : ICatalogoMateriales {
     private val materialesReciclables = listOf(
         MaterialReciclable("Papel periódico", CategoriaResiduos.PAPEL, 0.15),
