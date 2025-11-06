@@ -577,4 +577,4 @@ ISSUE 9
 
 Combiné el archivo app.kt y el mainGUI.kt para poder tener una sola función main que corra el código con su respectiva interfaz. 
 Agregué una ventana donde se ingresan los datos de la persona que recibirá su incentivo y modifiqué un poco la interfaz del programa. 
-Hice que el programa se reincie cada vez que se termina de acreditar el incentivo, asi el usuario puede comenzar una nueva operacion sin tener los items de la operación anterior registrados. 
+Hice que el programa se reincie cada vez que se termina de acreditar el incentivo, asi el usuario puede comenzar una nueva operacion sin tener los items de la operación anterior registrados.  
