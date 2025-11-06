@@ -1,11 +1,8 @@
 package org.example
 
-// SRP: Solo coordina entre la vista y el servicio
-// DIP: Depende de abstracciones
-
 class ControladorUI(
     private val servicio: ServicioReciclaje,
-    private val tarea: TareaDeReciclaje,
+    private var tarea: TareaDeReciclaje,
     private val formateador: IFormateadorUI
 ) : IControladorUI {
     
@@ -16,6 +13,7 @@ class ControladorUI(
     }
     
     override fun iniciar() {
+        
         // Controlador listo
     }
     
@@ -53,5 +51,9 @@ class ControladorUI(
                 vistaActual.mostrarMensajeError("El material '${resultado.nombreBuscado}' no existe en el catálogo")
             }
         }
+    }
+    
+    fun reiniciarTarea() {
+        tarea = TareaDeReciclaje()
     }
 }

@@ -1,8 +1,5 @@
 package org.example
 
-// SRP: Solo coordina el flujo de la aplicación
-// DIP: Depende de abstracciones
-
 class ControladorReciclaje(
     private val servicio: ServicioReciclaje,
     private val io: IEntradaSalida

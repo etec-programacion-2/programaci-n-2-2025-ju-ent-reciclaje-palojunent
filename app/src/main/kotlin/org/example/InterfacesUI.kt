@@ -1,6 +1,5 @@
 package org.example
 
-// DIP: Abstracciones para la capa de presentación
 interface IVistaReciclaje {
     fun mostrarMensajeExito(mensaje: String)
     fun mostrarMensajeError(mensaje: String)

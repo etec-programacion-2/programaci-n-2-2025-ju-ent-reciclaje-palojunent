@@ -3,19 +3,11 @@ package org.example
 import javax.swing.SwingUtilities
 
 fun main() {
-    //dependencias
-    val catalogoMateriales = CatalogoMateriales
-    val calculadoraBeneficios = CalculadoraBeneficios()
-    val validador = ValidadorEntrada()
-    val servicio = ServicioReciclaje(catalogoMateriales, calculadoraBeneficios, validador)
-    
-    // Abrir interfaz gráfica
+    val servicio = ServicioReciclaje(CatalogoMateriales, CalculadoraBeneficios(), ValidadorEntrada())
     SwingUtilities.invokeLater {
-        val tarea = TareaDeReciclaje()
-        val formateador = FormateadorUI()
-        val controlador = ControladorUI(servicio, tarea, formateador)
-        val ventana = VentanaReciclaje(catalogoMateriales, formateador, controlador)
+        val controlador = ControladorUI(servicio, TareaDeReciclaje(), FormateadorUI())
+        val ventana = VentanaReciclaje(CatalogoMateriales, FormateadorUI(), controlador)
         controlador.conectarVista(ventana)
-        ventana.isVisible = true
-    }
+        ventana.isVisible = true 
+    } 
 }

@@ -1,7 +1,5 @@
 package org.example
 
-// DIP: Abstracciones para que las clases dependan de interfaces, no de implementaciones
-
 interface ICatalogoMateriales {
     fun listarMateriales(): List<MaterialReciclable>
     fun buscarPorNombre(nombre: String): MaterialReciclable?
