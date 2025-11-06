@@ -1,5 +1,6 @@
 package org.example
 
+//Controlador para la interfaz gráfica (Swing)
 class ControladorUI(
     private val servicio: ServicioReciclaje,
     private var tarea: TareaDeReciclaje,
@@ -13,7 +14,7 @@ class ControladorUI(
     }
     
     override fun iniciar() {
-        
+
         // Controlador listo
     }
     
@@ -35,6 +36,7 @@ class ControladorUI(
         
         val resultado = servicio.agregarItemATarea(tarea, nombreMaterial, peso)
         
+//Maneja los diferentes resultados posibles
         when (resultado) {
             is ResultadoAgregarItem.Exito -> {
                 vistaActual.actualizarListaItems(formateador.formatearListaItems(tarea.obtenerItems()))
@@ -52,7 +54,8 @@ class ControladorUI(
             }
         }
     }
-    
+
+// Reinicia la tarea (cuando se acredita el beneficio)
     fun reiniciarTarea() {
         tarea = TareaDeReciclaje()
     }

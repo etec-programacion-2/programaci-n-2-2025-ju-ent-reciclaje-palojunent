@@ -1,5 +1,6 @@
 package org.example
 
+//Formateo de datos para la UI
 interface IFormateadorUI {
     fun formatearListaItems(items: List<ItemReciclado>): List<String>
     fun formatearMensajeExito(item: ItemReciclado, beneficio: Double): String
@@ -7,7 +8,8 @@ interface IFormateadorUI {
 }
 
 class FormateadorUI : IFormateadorUI {
-    
+
+//Convierte una lista de ItemReciclado a una lista de Strings para mostrar en JList
     override fun formatearListaItems(items: List<ItemReciclado>): List<String> {
         return items.mapIndexed { index, item ->
             val beneficio = item.pesoEnKg * item.material.precioPorUnidad
