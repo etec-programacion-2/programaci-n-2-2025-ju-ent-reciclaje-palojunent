@@ -1,7 +1,7 @@
 package org.example
 
-// SRP: Solo maneja entrada/salida por consola
-// ISP: Implementa solo métodos de I/O
+//interfaz consola
+
 class EntradaSalidaConsola : IEntradaSalida {
     
     override fun mostrarMensaje(mensaje: String) {

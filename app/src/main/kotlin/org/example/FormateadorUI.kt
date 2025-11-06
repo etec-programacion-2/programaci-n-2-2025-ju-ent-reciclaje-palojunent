@@ -1,7 +1,5 @@
 package org.example
 
-// SRP: Solo formatea datos para mostrar en la UI
-
 interface IFormateadorUI {
     fun formatearListaItems(items: List<ItemReciclado>): List<String>
     fun formatearMensajeExito(item: ItemReciclado, beneficio: Double): String

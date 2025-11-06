@@ -1,7 +1,7 @@
 package org.example
 
 //Solo maneja la lógica de negocio del reciclaje
-//Depende de las interfaces, no de implementaciones concretas
+//Depende de las interfaces
 
 class ServicioReciclaje(
     private val catalogo: ICatalogoMateriales,

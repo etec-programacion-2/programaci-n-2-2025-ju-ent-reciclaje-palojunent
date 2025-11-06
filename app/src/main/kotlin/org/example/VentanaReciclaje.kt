@@ -3,20 +3,22 @@ package org.example
 import javax.swing.*
 import java.awt.*
 
-// SRP: Solo maneja componentes visuales
+
 class VentanaReciclaje(
     private val catalogo: ICatalogoMateriales,
     private val formateador: IFormateadorUI,
-    private val controlador: IControladorUI
-) : JFrame("Sistema de Reciclaje"), IVistaReciclaje {
+    private val controlador: ControladorUI
+) : JFrame("ReSimple"), IVistaReciclaje {
     
     private val listModel = DefaultListModel<String>()
     private val comboMateriales = JComboBox<String>()
     private val txtPeso = JTextField(10)
     private val btnAgregar = JButton("Agregar Material")
+    private val btnObtenerBeneficio = JButton("Obtener Beneficio")
     private val listItems = JList(listModel)
     private val lblBeneficioTotal = JLabel("Beneficio Total: $0.00")
     private val lblMensaje = JLabel(" ")
+    private var beneficioActual = 0.0
     
     init {
         configurarVentana()
@@ -49,7 +51,9 @@ class VentanaReciclaje(
     }
     
     override fun actualizarBeneficioTotal(beneficio: Double) {
+        beneficioActual = beneficio
         lblBeneficioTotal.text = "Beneficio Total: $${String.format("%.2f", beneficio)}"
+        btnObtenerBeneficio.isEnabled = beneficio > 0
     }
     
     override fun limpiarFormulario() {
@@ -84,7 +88,7 @@ class VentanaReciclaje(
     private fun crearPanelTitulo(): JPanel {
         return JPanel().apply {
             background = Color(46, 125, 50)
-            add(JLabel("🌿 Asistente de Registro de Reciclaje").apply {
+            add(JLabel("ReSimple - Asistente de Registro de Reciclaje").apply {
                 foreground = Color.WHITE
                 font = Font("Arial", Font.BOLD, 24)
             })
@@ -176,8 +180,18 @@ class VentanaReciclaje(
             alignmentX = Component.CENTER_ALIGNMENT
         }
         
+        btnObtenerBeneficio.apply {
+            background = Color(255, 193, 7)
+            foreground = Color.BLACK
+            font = Font("Arial", Font.BOLD, 16)
+            alignmentX = Component.CENTER_ALIGNMENT
+            isEnabled = false
+        }
+        
         panelResumen.add(Box.createVerticalStrut(10))
         panelResumen.add(lblBeneficioTotal)
+        panelResumen.add(Box.createVerticalStrut(20))
+        panelResumen.add(btnObtenerBeneficio)
         panelResumen.add(Box.createVerticalStrut(10))
         
         panel.add(panelLista, BorderLayout.CENTER)
@@ -200,6 +214,41 @@ class VentanaReciclaje(
         
         txtPeso.addActionListener {
             controlador.agregarItem()
+        }
+        
+        btnObtenerBeneficio.addActionListener {
+            abrirVentanaBeneficio()
+        }
+    }
+    
+    private fun abrirVentanaBeneficio() {
+        val ventanaBeneficio = VentanaBeneficio(beneficioActual) {
+            reiniciarPrograma()
+        }
+        ventanaBeneficio.isVisible = true
+    }
+    
+    private fun reiniciarPrograma() {
+        // Reiniciar la tarea en el controlador
+        controlador.reiniciarTarea()
+        
+        // Limpiar lista de items
+        listModel.clear()
+        
+        // Resetear beneficio
+        beneficioActual = 0.0
+        lblBeneficioTotal.text = "Beneficio Total: $0.00"
+        btnObtenerBeneficio.isEnabled = false
+        
+        // Limpiar formulario
+        limpiarFormulario()
+        
+        // Mensaje de confirmación
+        lblMensaje.text = "✅ Programa reiniciado - Nueva tarea iniciada"
+        lblMensaje.foreground = Color(46, 125, 50)
+        Timer(3000) { lblMensaje.text = " " }.apply {
+            isRepeats = false
+            start()
         }
     }
 }
