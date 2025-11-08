@@ -586,3 +586,8 @@ Comenté el código explicando que hacen las clases, funciones y algunas variabl
 ISSUE 10 
 
 Decidí darle la posibildad de que el código se pueda correr tanto en la consola de comandos como en la UI(interfaz de usuario), agregando dos archivos, uno llamado iniciadorGUI.kt y otro selectorModo.kt donde contienen cada uno sus respectivos codigos donde ejecutan la consola o la UI. Comenté los archivos, hice un par de modificaciones para que la consola se vea más prolija y modifiqué el app.kt para que funcione lo planteado anteriormente. 
+
+----------------------------------------
+ISSUE 11
+
+Comencé con las instrucciones del readme, junto con los requisitos que necesita el usuario para poder hacer funcionar el codigo y el paso a paso.
