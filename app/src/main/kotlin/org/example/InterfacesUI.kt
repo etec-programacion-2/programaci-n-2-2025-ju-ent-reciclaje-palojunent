@@ -1,5 +1,6 @@
 package org.example
 
+//Interfaz que define qué puede hacer la ventana (Contratos para la interfaz)
 interface IVistaReciclaje {
     fun mostrarMensajeExito(mensaje: String)
     fun mostrarMensajeError(mensaje: String)
@@ -10,6 +11,7 @@ interface IVistaReciclaje {
     fun obtenerPeso(): Double?
 }
 
+//Interfaz que define las acciones del controlador
 interface IControladorUI {
     fun iniciar()
     fun agregarItem()

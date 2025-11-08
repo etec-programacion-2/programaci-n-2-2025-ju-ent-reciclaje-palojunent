@@ -1,6 +1,9 @@
 package org.example
 
+//Object (singleton), mantiene la lista de materiales disponibles. Solo existe una instancia en toda la aplicación ("Base de datos" de los materiales)
 object CatalogoMateriales : ICatalogoMateriales {
+
+//Lista inmutable de todos los materiales que acepta el sistema
     private val materialesReciclables = listOf(
         MaterialReciclable("Papel periódico", CategoriaResiduos.PAPEL, 0.15),
         MaterialReciclable("Cartón corrugado", CategoriaResiduos.CARTÓN, 0.12),
@@ -11,8 +14,10 @@ object CatalogoMateriales : ICatalogoMateriales {
         MaterialReciclable("Cable cobre", CategoriaResiduos.METAL, 6.50)
     )
 
+//Devuelve todos los materiales disponibles
     override fun listarMateriales(): List<MaterialReciclable> = materialesReciclables
     
+//Busca un material por su nombre exacto, retorna null si no existe
     override fun buscarPorNombre(nombre: String): MaterialReciclable? =
         materialesReciclables.find { it.nombre == nombre }
 }

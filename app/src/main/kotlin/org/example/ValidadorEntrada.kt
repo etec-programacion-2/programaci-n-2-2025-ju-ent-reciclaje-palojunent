@@ -1,9 +1,10 @@
 package org.example
 
-//Solo valida entradas
 
+//Clase que valida y verifica las entradas antes de procesarlas (Validación datos del usuario)
 class ValidadorEntrada : IValidadorEntrada {
     
+//Método que valida que el peso sea lógico y dentro de límites
     override fun validarPeso(peso: Double): ResultadoValidacion {
         return when {
             peso <= 0 -> ResultadoValidacion.Invalido(
@@ -16,6 +17,7 @@ class ValidadorEntrada : IValidadorEntrada {
         }
     }
     
+//Método que verifica que el nombre del material sea válido
     override fun validarNombreMaterial(nombre: String): ResultadoValidacion {
         return when {
             nombre.isBlank() -> ResultadoValidacion.Invalido(
