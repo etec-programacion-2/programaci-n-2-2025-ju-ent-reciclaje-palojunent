@@ -3,7 +3,7 @@ package org.example
 //Controlador por si el programa se ejecuta en consola (Controlador para versión consola)
 class ControladorReciclaje(
     private val servicio: ServicioReciclaje,
-    private val io: IEntradaSalida  // Interfaz para entrada/salida por consola
+    private val io: IEntradaSalida  //Interfaz para entrada/salida por consola
 ) {
     
 //Ejecuta el flujo completo del programa por consola
@@ -46,7 +46,7 @@ class ControladorReciclaje(
             
 //Si el peso no es válido, muestra error y vuelve a pedir
             if (peso == null) {
-                io.mostrarError("Peso inválido. Debe ingresar un número.")
+                io.mostrarError("Peso invalido. Debe ingresar un numero.")
                 continue
             }
             
@@ -72,7 +72,7 @@ class ControladorReciclaje(
                 io.mostrarError(resultado.mensaje)
             }
             is ResultadoAgregarItem.MaterialNoEncontrado -> {
-                io.mostrarError("El material '${resultado.nombreBuscado}' no existe en el catálogo")
+                io.mostrarError("El material '${resultado.nombreBuscado}' no existe en el catalogo")
                 io.mostrarMensaje("Materiales disponibles:")
                 resultado.materialesDisponibles.forEach {
                     io.mostrarMensaje("    - ${it.nombre} (${it.categoria})")

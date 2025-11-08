@@ -5,8 +5,8 @@ object CatalogoMateriales : ICatalogoMateriales {
 
 //Lista inmutable de todos los materiales que acepta el sistema
     private val materialesReciclables = listOf(
-        MaterialReciclable("Papel periódico", CategoriaResiduos.PAPEL, 0.15),
-        MaterialReciclable("Cartón corrugado", CategoriaResiduos.CARTÓN, 0.12),
+        MaterialReciclable("Papel periodico", CategoriaResiduos.PAPEL, 0.15),
+        MaterialReciclable("Carton corrugado", CategoriaResiduos.CARTON, 0.12),
         MaterialReciclable("Botella PET", CategoriaResiduos.PLASTICO, 0.30),
         MaterialReciclable("Envase yogur", CategoriaResiduos.PLASTICO, 0.25),
         MaterialReciclable("Botella vidrio", CategoriaResiduos.VIDRIO, 0.08),
