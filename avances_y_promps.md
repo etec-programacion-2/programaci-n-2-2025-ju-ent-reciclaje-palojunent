@@ -580,3 +580,9 @@ Agregué una ventana donde se ingresan los datos de la persona que recibirá su 
 Hice que el programa se reincie cada vez que se termina de acreditar el incentivo, asi el usuario puede comenzar una nueva operacion sin tener los items de la operación anterior registrados.  
 
 Comenté el código explicando que hacen las clases, funciones y algunas variables definidas. 
+
+---------------------------------------
+
+ISSUE 10 
+
+Decidí darle la posibildad de que el código se pueda correr tanto en la consola de comandos como en la UI(interfaz de usuario), agregando dos archivos, uno llamado iniciadorGUI.kt y otro selectorModo.kt donde contienen cada uno sus respectivos codigos donde ejecutan la consola o la UI. Comenté los archivos, hice un par de modificaciones para que la consola se vea más prolija y modifiqué el app.kt para que funcione lo planteado anteriormente. 

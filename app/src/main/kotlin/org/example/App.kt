@@ -2,22 +2,18 @@ package org.example
 
 import javax.swing.SwingUtilities
 
-fun main() {
-    
-//Inicializa el servicio principal con sus dependencias
+fun main(args: Array<String>) {
+
+//Servicio principal con todas sus dependencias (catálogo, calculadora, validador)
     val servicio = ServicioReciclaje(CatalogoMateriales, CalculadoraBeneficios(), ValidadorEntrada())
     
-//Esto segura que la interfaz gráfica se corra en el hilo correcto
-    SwingUtilities.invokeLater {
-
-//Controlador que maneja la lógica entre la vista y el servicio y ventana principal
-        val controlador = ControladorUI(servicio, TareaDeReciclaje(), FormateadorUI())
-        val ventana = VentanaReciclaje(CatalogoMateriales, FormateadorUI(), controlador)
-        
-//Conecta la ventana con el controlador
-        controlador.conectarVista(ventana)
-        
-//Hace visible la ventana
-        ventana.isVisible = true 
-    } 
+//Determina qué modo usar: si hay argumentos usa el primero, sino pregunta al usuario
+    val modo = if (args.isNotEmpty()) args[0] else SelectorModo.solicitar()
+    
+//Si el modo es consola (puede ser "consola", "terminal", "cli" o "1"), con un if inicia el controlador de consola y lo corre, sino corre la interfaz gráfica
+    if (modo in listOf("consola", "terminal", "cli", "1")) {
+        ControladorReciclaje(servicio, EntradaSalidaConsola()).ejecutar()
+    } else {
+        IniciadorGUI.iniciar(servicio)
+    }
 }
