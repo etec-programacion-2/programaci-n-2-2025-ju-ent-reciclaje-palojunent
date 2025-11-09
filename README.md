@@ -20,14 +20,14 @@ ReSimple es una aplicación desarrollada en Kotlin que calcula automáticamente 
 
 # Requisitos Previos
 
-    - Java Development Kit (JDK) 21+
+Java Development Kit (JDK) 21+
 
-    ReSimple requiere **JDK 21 o superior**. Verificá si ya lo tenés instalado:
+ReSimple requiere **JDK 21 o superior**. Verificá si ya lo tenés instalado:
 
     java -version
 
-    ¿No tenés Java? Descárgalo aquí:
-    - Windows/macOS/Linux: [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) o [Adoptium](https://adoptium.net/)
+¿No tenés Java? Descárgalo aquí:
+- Windows/macOS/Linux: [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) o [Adoptium](https://adoptium.net/)
 
 
 ## Instrucciones de instalación según tu sistema operativo
@@ -67,9 +67,9 @@ ReSimple es una aplicación desarrollada en Kotlin que calcula automáticamente 
 - Opción 2: Descargar ZIP
 
     1. Descarga el proyecto como ZIP desde GitHub.com copiando este enlace: https://github.com/etec-programacion-2/programaci-n-2-2025-ju-ent-reciclaje-palojunent.git
-    2. Ya en la página, deberías ver un botón verde donde dice "<>code"
-    3. cliquea ahí, y toca en donde dice "download ZIP"
-    4. Extrae el archivo en tu carpeta preferida, haciendo click derecho en el archivo ZIP, y click en "extraer todo aqui"
+    2. Ya en la página, deberías ver un botón verde donde dice `<>code`
+    3. cliquea ahí, y toca en donde dice `download ZIP`
+    4. Extrae el archivo en tu carpeta preferida, haciendo click derecho en el archivo ZIP, y click en `extraer todo aqui`
     5. Abre una terminal en la carpeta extraída
 
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -172,7 +172,7 @@ BENEFICIO TOTAL: $12.45
      - **Nombre completo**
      - **DNI** (mínimo 7 dígitos)
      - **CBU/CVU** (22 dígitos)
-   - Confirma y listo ✅
+   - Confirma y listo 
 
 3. **Nueva operación:**
    - El programa se reinicia automáticamente
@@ -223,6 +223,8 @@ BENEFICIO TOTAL: $12.45
 
 2. ## "Permission denied" (Linux/Mac)
 
+**Copiá estos comandos en el terminal:**
+
     chmod +x gradlew
     ./gradlew run
 
@@ -255,11 +257,11 @@ BENEFICIO TOTAL: $12.45
 
 7. ## Build failed
 
-- Copia este comando en el terminal: 
+**Copia este comando en el terminal:**
 
     ./gradlew clean build
 
-- Si persiste, eliminá el caché con el siguiente comando, copiandolo en el terminal:
+**Si persiste, eliminá el caché con el siguiente comando, copiandolo en el terminal:**
 
     rm -rf ~/.gradle/caches
     ./gradlew clean build
@@ -278,7 +280,7 @@ BENEFICIO TOTAL: $12.45
 
 El proyecto sigue principios SOLID y POO, además está organizado en capas:
 
-    📁 org.example/
+    org.example/
     ├──  App.kt                    # Punto de entrada
     ├──  CatalogoMateriales.kt     # Singleton del catálogo
     ├──  CategoriaResiduos.kt      # Enum de categorías
@@ -296,22 +298,20 @@ El proyecto sigue principios SOLID y POO, además está organizado en capas:
 
 ## Comandos Útiles
 
-- Compilar sin ejecutar:
+**Compilar sin ejecutar:**
 
     ./gradlew build
 
-- Ejecutar tests:
+**Ejecutar tests:**
 
     ./gradlew test
 
-- Limpiar proyecto:
+**Limpiar proyecto:**
 
     ./gradlew clean
 
-- Ver dependencias:
+**Ver dependencias:**
 
     ./gradlew dependencies
 
 ------------------------------------------------------------------------------------------------------------------------------------
-
-[⬆ Volver arriba](#-resimple---sistema-de-reciclaje-inteligente)
