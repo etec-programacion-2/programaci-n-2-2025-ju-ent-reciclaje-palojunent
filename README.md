@@ -20,39 +20,74 @@ ReSimple es una aplicación desarrollada en Kotlin que calcula automáticamente 
 
 # Requisitos Previos
 
-    - Java Development Kit (JDK) 21+
+- Java Development Kit (JDK) 21+
 
-    ReSimple requiere **JDK 21 o superior**. Verificá si ya lo tenés instalado:
+ReSimple requiere **JDK 21 o superior**. Verificá si ya lo tenés instalado:
 
     java -version
 
-    ¿No tenés Java? Descárgalo aquí:
-    - Windows/macOS/Linux: [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) o [Adoptium](https://adoptium.net/)
+¿No tenés Java? Descárgalo aquí:
+- Windows/macOS/Linux: [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) o [Adoptium](https://adoptium.net/)
 
 
 ## Instrucciones de instalación según tu sistema operativo
 
 **Windows:**
 
-    1. Descarga el instalador JDK 21
-    2. Ejecuta el instalador y sigue a el asistente
-    3. Verifica con `java -version`
+1. Descarga el instalador JDK 21 en Oracle JDK Downloads
+2. Ejecuta el instalador y sigue a el asistente
+3. Verifica con `java -version` en la terminal 
 
 **macOS (con Homebrew):**
 
-    brew install openjdk@21
-    echo 'export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"' >> ~/.zshrc
-    source ~/.zshrc
+1. Instala Homebrew (si no lo tienes):
+2. Abre Terminal (Cmd + Espacio → escribe "Terminal")
+3. Pega este comando:
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+4. Presiona Enter y sigue las instrucciones
+5. Instala OpenJDK 21:
+
+       brew install openjdk@21
+
+6. Configurar el PATH:
+
+    - Para macOS con chip Intel:
+
+        bash   echo 'export PATH="/usr/local/opt/openjdk@21/bin:$PATH"' >> ~/.zshrc
+        source ~/.zshrc
+
+    - Para macOS con chip Apple Silicon (M1/M2/M3):
+
+        bash   echo 'export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"' >> ~/.zshrc
+        source ~/.zshrc
+
+7. Crea un enlace simbólico:
+
+    sudo ln -sfn /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-21.jdk
+
+8. Verifica la instalación:
+
+    java -version
 
 **Linux (Ubuntu/Debian):**
 
+1. En el terminal, actualiza repositorios:
+
     sudo apt update
+    
+2. Instala OpenJDK 21:
+
     sudo apt install openjdk-21-jdk
 
+3. Verifica la instalación:
+
+       java -version
 
 ## ¿Y GRADLE?
 
-    No necesitás instalar Gradle - el proyecto incluye Gradle Wrapper (9.0.0) que lo maneja automáticamente.
+No necesitás instalar Gradle - el proyecto incluye Gradle Wrapper (9.0.0) que lo maneja automáticamente.
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -78,15 +113,15 @@ ReSimple es una aplicación desarrollada en Kotlin que calcula automáticamente 
 
 **Windows**
 
-    1. Abrí PowerShell o CMD en la carpeta del proyecto
-    2. Copiá y ejecutá:
+1. Abrí PowerShell o CMD en la carpeta del proyecto
+2. Copiá y ejecutá:
 
         gradlew.bat run
 
 **macOS / Linux**
 
-    1. Abre el terminal en la carpeta del proyecto
-    2. Copiá y ejecutá:
+1. Abre el terminal en la carpeta del proyecto
+2. Copiá y ejecutá:
 
         chmod +x gradlew
         ./gradlew run
@@ -100,7 +135,7 @@ ReSimple es una aplicación desarrollada en Kotlin que calcula automáticamente 
 
 **Seleccionar Modo de Ejecución**
 
-    Al iniciar verás:
+Al iniciar verás:
 
     ---------------------------------
         ReSimple - RECICLAJE
@@ -223,6 +258,8 @@ BENEFICIO TOTAL: $12.45
 
 2. ## "Permission denied" (Linux/Mac)
 
+**Copia estos comandos en la terminal:**
+
     chmod +x gradlew
     ./gradlew run
 
@@ -255,11 +292,11 @@ BENEFICIO TOTAL: $12.45
 
 7. ## Build failed
 
-- Copia este comando en el terminal: 
+**Copia este comando en el terminal:**
 
     ./gradlew clean build
 
-- Si persiste, eliminá el caché con el siguiente comando, copiandolo en el terminal:
+**Si persiste, eliminá el caché con el siguiente comando, copiandolo en el terminal:**
 
     rm -rf ~/.gradle/caches
     ./gradlew clean build
@@ -278,7 +315,7 @@ BENEFICIO TOTAL: $12.45
 
 El proyecto sigue principios SOLID y POO, además está organizado en capas:
 
-    📁 org.example/
+    org.example/
     ├──  App.kt                    # Punto de entrada
     ├──  CatalogoMateriales.kt     # Singleton del catálogo
     ├──  CategoriaResiduos.kt      # Enum de categorías
@@ -296,22 +333,20 @@ El proyecto sigue principios SOLID y POO, además está organizado en capas:
 
 ## Comandos Útiles
 
-- Compilar sin ejecutar:
+**Compilar sin ejecutar:**
 
     ./gradlew build
 
-- Ejecutar tests:
+**Ejecutar tests:**
 
     ./gradlew test
 
-- Limpiar proyecto:
+**Limpiar proyecto:**
 
     ./gradlew clean
 
-- Ver dependencias:
+**Ver dependencias:**
 
     ./gradlew dependencies
 
 ------------------------------------------------------------------------------------------------------------------------------------
-
-[⬆ Volver arriba](#-resimple---sistema-de-reciclaje-inteligente)
