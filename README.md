@@ -1,21 +1,19 @@
-Paloma Juñent - Integrador Programación II
+# Paloma Juñent - Integrador Programación II
 
-# ReSimple - Sistema de Reciclaje Inteligente
+## ReSimple - Sistema de Reciclaje Inteligente
 
 ReSimple es una aplicación desarrollada en Kotlin que calcula automáticamente cuánto dinero ganarás al reciclar diferentes materiales. Simplemente ingresá qué materiales tenés y su peso, y el sistema convierte tus residuos reciclables en beneficios económicos de forma simple y rápida.
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
-# Tabla de Contenidos
+# Información Técnica
 
-- [Requisitos Previos](#-Requisitos-Previos)
-- [Instalación Rápida](#-Instalación-Rápida)
-- [Ejecutar la Aplicación](#-Ejecutar-la-Aplicación)
-- [Guía de Uso](#-Guía-de-Uso)
-- [Materiales Aceptados](#-Materiales-Aceptados)
-- [Solución de Problemas](#-Solución-de-Problemas)
-- [Información Técnica](#-Información-Técnica)
-
+- **Lenguaje:** Kotlin 2.2.0
+- **Build System:** Gradle 9.0.0
+- **JDK Target:** 21
+- **GUI Framework:** Java Swing
+- **Testing:** JUnit 5
+  
 ------------------------------------------------------------------------------------------------------------------------------------
 
 # Requisitos Previos
@@ -87,19 +85,20 @@ ReSimple requiere **JDK 21 o superior**. Verificá si ya lo tenés instalado:
 
 ## ¿Y GRADLE?
 
-No necesitás instalar Gradle - el proyecto incluye Gradle Wrapper (9.0.0) que lo maneja automáticamente.
+El proyecto incluye Gradle Wrapper (9.0.0) que lo maneja automáticamente.
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
-# Instalación Rápida
+# Instalación
 
-- Opción 1: Clonar con Git (recomendado):
+- **Opción 1: Clonar con Git (recomendado)**:
+  
     -Abre una terminal o línea de comandos en la ubicación donde querés guardar el proyecto y copiá estos comandos: 
 
         git clone https://github.com/etec-programacion-2/programaci-n-2-2025-ju-ent-reciclaje-palojunent.git
         cd programaci-n-2-2025-ju-ent-reciclaje-palojunent
 
-- Opción 2: Descargar ZIP
+- **Opción 2: Descargar ZIP**
 
     1. Descarga el proyecto como ZIP desde GitHub.com copiando este enlace: https://github.com/etec-programacion-2/programaci-n-2-2025-ju-ent-reciclaje-palojunent.git
     2. Ya en la página, deberías ver un botón verde donde dice "<>code"
@@ -127,7 +126,7 @@ No necesitás instalar Gradle - el proyecto incluye Gradle Wrapper (9.0.0) que l
         ./gradlew run
 
 
-> **Primera ejecución:** Gradle descargará dependencias (1-2 minutos). Las ejecuciones que le siguen serán instantáneas.
+> **Primera ejecución:** Gradle va a descargar dependencias (1-2 minutos). Las ejecuciones que le siguen serán instantáneas.
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -151,9 +150,7 @@ Al iniciar verás:
 
 # Modo Consola
 
-**Ideal para usuarios avanzados y servidores sin GUI**
-
-## Flujo de trabajo:
+## Funcionamiento:
 
 1. Visualiza el catálogo de materiales
 2. Ingresa el **nombre exacto** del material
@@ -173,9 +170,7 @@ Al iniciar verás:
     >> Ingrese el nombre del material (o 'FIN' para terminar): FIN
     
     ═══════════════════════════════════
-    
     RESUMEN DE LA TAREA
-    
     ═══════════════════════════════════
     Items procesados: 2
     BENEFICIO TOTAL: $12.45
@@ -183,8 +178,6 @@ Al iniciar verás:
 ---
 
 # Modo Interfaz Gráfica
-
-**Ideal para usuarios que prefieren una experiencia visual**
 
 ## Características:
 
@@ -217,7 +210,7 @@ Al iniciar verás:
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
-# Materiales Aceptados
+# Materiales Aceptados Dentro del Catálogo
 
 | Material          | Categoría | Precio/kg | Ejemplo con 10kg |
 |-------------------|-----------|-----------|------------------|
@@ -305,15 +298,7 @@ Al iniciar verás:
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
-# Información Técnica
-
-- **Lenguaje:** Kotlin 2.2.0
-- **Build System:** Gradle 9.0.0
-- **JDK Target:** 21
-- **GUI Framework:** Java Swing
-- **Testing:** JUnit 5
-
-## Arquitectura
+# Arquitectura
 
 El proyecto sigue principios SOLID y POO, además está organizado en capas:
 
@@ -332,6 +317,8 @@ El proyecto sigue principios SOLID y POO, además está organizado en capas:
     ├──  VentanaReciclaje.kt       # Ventana principal
     ├──  VentanaBeneficio.kt       # Ventana acreditación
     └──  IniciadorGUI.kt           # Bootstrap GUI
+    
+---
 
 ## Comandos Útiles
 
