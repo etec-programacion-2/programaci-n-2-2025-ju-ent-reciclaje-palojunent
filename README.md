@@ -44,42 +44,42 @@ ReSimple requiere **JDK 21 o superior**. Verificá si ya lo tenés instalado:
 2. Abre Terminal (Cmd + Espacio → escribe "Terminal")
 3. Pega este comando:
 
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 4. Presiona Enter y sigue las instrucciones
 5. Instala OpenJDK 21:
 
-       brew install openjdk@21
+           brew install openjdk@21
 
 6. Configurar el PATH:
 
     - Para macOS con chip Intel:
 
-        bash   echo 'export PATH="/usr/local/opt/openjdk@21/bin:$PATH"' >> ~/.zshrc
-        source ~/.zshrc
+            bash   echo 'export PATH="/usr/local/opt/openjdk@21/bin:$PATH"' >> ~/.zshrc
+            source ~/.zshrc
 
     - Para macOS con chip Apple Silicon (M1/M2/M3):
 
-        bash   echo 'export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"' >> ~/.zshrc
-        source ~/.zshrc
+            bash   echo 'export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"' >> ~/.zshrc
+            source ~/.zshrc
 
 7. Crea un enlace simbólico:
 
-    sudo ln -sfn /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-21.jdk
+        sudo ln -sfn /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-21.jdk
 
 8. Verifica la instalación:
 
-    java -version
+        java -version
 
 **Linux (Ubuntu/Debian):**
 
 1. En el terminal, actualiza repositorios:
 
-    sudo apt update
+        sudo apt update
     
 2. Instala OpenJDK 21:
 
-    sudo apt install openjdk-21-jdk
+        sudo apt install openjdk-21-jdk
 
 3. Verifica la instalación:
 
@@ -96,7 +96,7 @@ No necesitás instalar Gradle - el proyecto incluye Gradle Wrapper (9.0.0) que l
 - Opción 1: Clonar con Git (recomendado):
     -Abre una terminal o línea de comandos en la ubicación donde querés guardar el proyecto y copiá estos comandos: 
 
-        git clone git clone https://github.com/etec-programacion-2/programaci-n-2-2025-ju-ent-reciclaje-palojunent.git
+        git clone https://github.com/etec-programacion-2/programaci-n-2-2025-ju-ent-reciclaje-palojunent.git
         cd programaci-n-2-2025-ju-ent-reciclaje-palojunent
 
 - Opción 2: Descargar ZIP
