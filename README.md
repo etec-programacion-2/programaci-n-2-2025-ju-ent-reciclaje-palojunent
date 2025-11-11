@@ -8,13 +8,13 @@ ReSimple es una aplicación desarrollada en Kotlin que calcula automáticamente 
 
 # Tabla de Contenidos
 
-- [Requisitos Previos](#-requisitos-previos)
-- [Instalación Rápida](#-instalación-rápida)
-- [Ejecutar la Aplicación](#-ejecutar-la-aplicación)
-- [Guía de Uso](#-guía-de-uso)
-- [Materiales Aceptados](#-materiales-aceptados)
-- [Solución de Problemas](#-solución-de-problemas)
-- [Información Técnica](#-información-técnica)
+- [Requisitos Previos](#-Requisitos-Previos)
+- [Instalación Rápida](#-Instalación-Rápida)
+- [Ejecutar la Aplicación](#-Ejecutar-la-Aplicación)
+- [Guía de Uso](#-Guía-de-Uso)
+- [Materiales Aceptados](#-Materiales-Aceptados)
+- [Solución de Problemas](#-Solución-de-Problemas)
+- [Información Técnica](#-Información-Técnica)
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -29,14 +29,28 @@ ReSimple requiere **JDK 21 o superior**. Verificá si ya lo tenés instalado:
 ¿No tenés Java? Descárgalo aquí:
 - Windows/macOS/Linux: [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) o [Adoptium](https://adoptium.net/)
 
-
+  
 ## Instrucciones de instalación según tu sistema operativo
 
-**Windows:**
+**Windows (utilizando alguno de los links dados anteriormente):**
 
 1. Descarga el instalador JDK 21 en Oracle JDK Downloads
 2. Ejecuta el instalador y sigue a el asistente
-3. Verifica con `java -version` en la terminal 
+3. Verifica con `java -version` en la terminal
+
+**Linux (Ubuntu/Debian):**
+
+1. En el terminal (win + T), actualiza repositorios:
+
+        sudo apt update
+    
+2. Instala OpenJDK 21:
+
+        sudo apt install openjdk-21-jdk
+
+3. Verifica la instalación:
+
+       java -version
 
 **macOS (con Homebrew):**
 
@@ -53,12 +67,12 @@ ReSimple requiere **JDK 21 o superior**. Verificá si ya lo tenés instalado:
 
 6. Configurar el PATH:
 
-    - Para macOS con chip Intel:
+    - **Para macOS con chip Intel**:
 
             bash   echo 'export PATH="/usr/local/opt/openjdk@21/bin:$PATH"' >> ~/.zshrc
             source ~/.zshrc
 
-    - Para macOS con chip Apple Silicon (M1/M2/M3):
+    - **Para macOS con chip Apple Silicon (M1/M2/M3)**:
 
             bash   echo 'export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"' >> ~/.zshrc
             source ~/.zshrc
@@ -70,20 +84,6 @@ ReSimple requiere **JDK 21 o superior**. Verificá si ya lo tenés instalado:
 8. Verifica la instalación:
 
         java -version
-
-**Linux (Ubuntu/Debian):**
-
-1. En el terminal, actualiza repositorios:
-
-        sudo apt update
-    
-2. Instala OpenJDK 21:
-
-        sudo apt install openjdk-21-jdk
-
-3. Verifica la instalación:
-
-       java -version
 
 ## ¿Y GRADLE?
 
@@ -161,22 +161,24 @@ Al iniciar verás:
 4. Repite para más materiales o escribe **`FIN`** para terminar
 
 ## Ejemplo práctico:
-
->> Ingrese el nombre del material (o 'FIN' para terminar): Botella PET
->> Ingrese el peso en Kg de 'Botella PET': 2.5
-✓ Material agregado: Botella PET - 2.5kg - Beneficio: $0.75
-
->> Ingrese el nombre del material (o 'FIN' para terminar): Cable cobre
->> Ingrese el peso en Kg de 'Cable cobre': 1.8
-✓ Material agregado: Cable cobre - 1.8kg - Beneficio: $11.70
-
->> Ingrese el nombre del material (o 'FIN' para terminar): FIN
-
-═══════════════════════════════════
-RESUMEN DE LA TAREA
-═══════════════════════════════════
-Items procesados: 2
-BENEFICIO TOTAL: $12.45
+    
+    >> Ingrese el nombre del material (o 'FIN' para terminar): Botella PET
+    >> Ingrese el peso en Kg de 'Botella PET': 2.5
+    ✓ Material agregado: Botella PET - 2.5kg - Beneficio: $0.75
+    
+    >> Ingrese el nombre del material (o 'FIN' para terminar): Cable cobre
+    >> Ingrese el peso en Kg de 'Cable cobre': 1.8
+    ✓ Material agregado: Cable cobre - 1.8kg - Beneficio: $11.70
+    
+    >> Ingrese el nombre del material (o 'FIN' para terminar): FIN
+    
+    ═══════════════════════════════════
+    
+    RESUMEN DE LA TAREA
+    
+    ═══════════════════════════════════
+    Items procesados: 2
+    BENEFICIO TOTAL: $12.45
 
 ---
 
@@ -207,7 +209,7 @@ BENEFICIO TOTAL: $12.45
      - **Nombre completo**
      - **DNI** (mínimo 7 dígitos)
      - **CBU/CVU** (22 dígitos)
-   - Confirma y listo ✅
+   - Confirma y listo 
 
 3. **Nueva operación:**
    - El programa se reinicia automáticamente
